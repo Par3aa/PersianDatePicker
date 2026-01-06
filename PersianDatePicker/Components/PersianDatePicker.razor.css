@@ -1,0 +1,117 @@
+﻿:root {
+    --control-height: 2.5rem;
+    /* Button color fallback chain across popular frameworks; final fallback to Blazor violet */
+    --button-color: var( --rz-primary, /* Radzen */
+    var(--mud-palette-primary, /* MudBlazor */
+    var(--kendo-color-primary, /* Kendo/Telerik */
+    var(--e-primary-color, /* Syncfusion */
+    var(--dxbl-primary, /* DevExpress Blazor */
+    var(--bs-primary, /* Blazorise / Bootstrap */
+    #7f00ff /* Fallback (Blazor violet) */
+    ))))));
+}
+
+:where(
+/* Radzen */
+.rz-form-field,
+/* MudBlazor */
+.mud-input-control, .mud-field,
+/* Telerik */
+.k-input, .k-textbox, .k-picker,
+/* Syncfusion */
+.e-input-group,
+/* DevExpress */
+.dxbl-edit,
+/* Blazorise / Bootstrap */
+.form-group ) {
+    --control-height: var(--rz-input-height, var(--mud-input-height, var(--kendo-input-height, var(--e-input-height, var(--dxbl-editor-height, var(--bs-form-control-height, 2.5rem))))));
+}
+
+.main-container {
+    border-radius: inherit;
+    overflow: hidden;
+    height: var(--control-height);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 2px;
+    padding: 0 0 0 2px;
+}
+
+.number-container {
+    display: flex;
+    flex-grow: 1;
+    direction: ltr;
+    align-items: center;
+}
+
+.round-button {
+    display: flex;
+    height: 100%;
+    max-width: var(--control-height);
+    flex: 0 0 auto;
+    align-self: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: var(--button-color);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    padding: 0 6px;
+}
+
+    .round-button:hover {
+        background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    .round-button:active {
+        background-color: rgba(128, 128, 128, 0.6);
+    }
+
+    .round-button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(128, 128, 128, 0.9);
+    }
+
+    /* Ensure icons inherit button color */
+    .round-button svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+
+.number-input {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+    .number-input:hover {
+        border: none;
+        border-radius: 0;
+    }
+
+    .number-input:active {
+        outline: none;
+        border: none;
+        border-radius: 0;
+    }
+
+    .number-input:focus-visible {
+        outline: none;
+        border: none;
+        border-radius: 0;
+    }
+
+    .number-input::-webkit-inner-spin-button,
+    .number-input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }

@@ -1,0 +1,150 @@
+﻿@using Par3aa.PersianDatePicker.Enums
+@namespace Par3aa.PersianDatePicker.Components
+@typeparam TValue
+
+<div class="@($"main-container {Class}")"
+     style="@($"{Style} {(Disabled ? "opacity: 0.5; pointer-events:none;" : ReadOnly ? "pointer-events:none;" : "")} {(string.IsNullOrWhiteSpace(Color) ? "" : $"--button-color:{Color};")}")"
+     tabindex="@TabIndex"
+     aria-disabled="@(IsInteractive ? "false" : "true")">
+
+    <div class="number-container">
+
+        @if (SelectionMode == PersianDatePickerSelectionMode.DropDown)
+        {
+            <!-- Year -->
+            <select class="@($"number-input {InputClass}")"
+                    style="@($"width:46%; {InputStyle}")"
+                    title="@YearTooltip"
+                    aria-label="@YearTooltip"
+                    disabled="@(!IsInteractive)"
+                    tabindex="@TabIndex"
+                    aria-disabled="@(IsInteractive ? "false" : "true")"
+                    @onchange="YearSelectChanged">
+                @if (IsNullable)
+                {
+                    <option value=""></option>
+                }
+                @foreach (var y in Years)
+                {
+                    <option value="@y" selected="@(SelectedYear == y)">@y</option>
+                }
+            </select>
+
+            <small>@SeparatorCharacter</small>
+
+            <!-- Month -->
+            <select class="@($"number-input {InputClass}")"
+                    style="@($"width:27%; {InputStyle}")"
+                    title="@MonthTooltip"
+                    aria-label="@MonthTooltip"
+                    disabled="@(!IsInteractive)"
+                    tabindex="@TabIndex"
+                    aria-disabled="@(IsInteractive ? "false" : "true")"
+                    @onchange="MonthSelectChanged">
+                @if (IsNullable)
+                {
+                    <option value=""></option>
+                }
+                @foreach (var m in Months)
+                {
+                    <option value="@m" selected="@(SelectedMonth == m)">@m</option>
+                }
+            </select>
+
+            <small>@SeparatorCharacter</small>
+
+            <!-- Day -->
+            <select class="@($"number-input {InputClass}")"
+                    style="@($"width:27%; {InputStyle}")"
+                    title="@DayTooltip"
+                    aria-label="@DayTooltip"
+                    disabled="@(!IsInteractive)"
+                    tabindex="@TabIndex"
+                    aria-disabled="@(IsInteractive ? "false" : "true")"
+                    @onchange="DaySelectChanged">
+                @if (IsNullable)
+                {
+                    <option value=""></option>
+                }
+                @foreach (var d in Days)
+                {
+                    <option value="@d" selected="@(SelectedDay == d)">@d</option>
+                }
+            </select>
+        }
+        else if (SelectionMode == PersianDatePickerSelectionMode.TextBox)
+        {
+            <!-- Year -->
+            <input type="number"
+                   class="@($"number-input {InputClass}")"
+                   style="@($"width:46%; {InputStyle}")"
+                   title="@YearTooltip"
+                   aria-label="@YearTooltip"
+                   disabled="@(!IsInteractive)"
+                   tabindex="@TabIndex"
+                   aria-disabled="@(IsInteractive ? "false" : "true")"
+                   min="@StartYear"
+                   max="@EndYear"
+                   @bind-value="SelectedYear"
+                   @bind-value:after="YearInputChanged" />
+
+            <small>@SeparatorCharacter</small>
+
+            <!-- Month -->
+            <input type="number"
+                   class="@($"number-input {InputClass}")"
+                   style="@($"width:27%; {InputStyle}")"
+                   title="@MonthTooltip"
+                   aria-label="@MonthTooltip"
+                   disabled="@(!IsInteractive)"
+                   tabindex="@TabIndex"
+                   aria-disabled="@(IsInteractive ? "false" : "true")"
+                   min="1"
+                   max="12"
+                   @bind-value="SelectedMonth"
+                   @bind-value:after="MonthInputChanged" />
+
+            <small>@SeparatorCharacter</small>
+
+            <!-- Day -->
+            <input type="number"
+                   class="@($"number-input {InputClass}")"
+                   style="@($"width:27%; {InputStyle}")"
+                   title="@DayTooltip"
+                   aria-label="@DayTooltip"
+                   disabled="@(!IsInteractive)"
+                   tabindex="@TabIndex"
+                   aria-disabled="@(IsInteractive ? "false" : "true")"
+                   min="1"
+                   max="@((Days.Length > 0) ? Days.Last() : 31)"
+                   @bind-value="SelectedDay"
+                   @bind-value:after="DayInputChanged" />
+        }
+    </div>
+
+    <!-- Set Today -->
+    <button type="button"
+            class="@($"round-button {ButtonClass}")"
+            style="@($"{ButtonStyle} {(ShowTodayButton ? "" : "display:none;")}")"
+            title="@TodayButtonTooltip"
+            aria-label="@TodayButtonTooltip"
+            disabled="@(!IsInteractive)"
+            tabindex="@TabIndex"
+            @onclick="SetTodayAsync"
+            aria-hidden="@(!ShowTodayButton)">
+        @((MarkupString)TodayIcon)
+    </button>
+
+    <!-- Set Null -->
+    <button type="button"
+            class="@($"round-button {ButtonClass}")"
+            style="@($"{ButtonStyle} {(ShowClearButton && IsNullable ? "" : "display:none;")}")"
+            title="@ClearButtonTooltip"
+            aria-label="@ClearButtonTooltip"
+            disabled="@(!IsInteractive)"
+            tabindex="@TabIndex"
+            @onclick="SetNullAsync"
+            aria-hidden="@(!ShowClearButton || !IsNullable)">
+        @((MarkupString)ClearIcon)
+    </button>
+</div>

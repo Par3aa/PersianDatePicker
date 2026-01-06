@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- NuGet package metadata -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>PersianDatePicker</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Par3aa</Authors>
+    <Company>Par3aa</Company>
+    <Description>Blazor Persian date picker component with support for DateTime and DateTime? using System.Globalization.PersianCalendar.</Description>
+    <PackageTags>Blazor;DatePicker;Persian;Jalali;Calendar;RCL;Component</PackageTags>
+    <RepositoryUrl>https://github.com/Par3aa/PersianDatePicker</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Par3aa/PersianDatePicker</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <LicenseExpression>MIT</LicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <EnableDefaultItems>true</EnableDefaultItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+</Project>
