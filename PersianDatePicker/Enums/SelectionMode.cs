@@ -1,9 +1,9 @@
-﻿namespace Par3aa.PersianDatePicker.Enums;
+﻿namespace Par3aa.PersianDatePicker;
 
 /// <summary>
 /// Determines the input style of the picker.
 /// </summary>
-public enum PersianDatePickerSelectionMode
+public enum SelectionMode
 {
     /// <summary>
     /// Uses HTML select elements for Year, Month, and Day.

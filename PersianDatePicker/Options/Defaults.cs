@@ -1,6 +1,4 @@
-﻿using Par3aa.PersianDatePicker.Enums;
-
-namespace Par3aa.PersianDatePicker.Options;
+﻿namespace Par3aa.PersianDatePicker;
 
 /// <summary>
 /// Global defaults for the <c>PersianDatePicker</c> component.
@@ -10,7 +8,7 @@ namespace Par3aa.PersianDatePicker.Options;
 /// Parameters in the component initialize from these defaults.
 /// If a consumer supplies an explicit parameter value on an instance, that value overrides the default.
 /// </remarks>
-public static class PersianDatePickerDefaults
+public static class Defaults
 {
     /// <summary>Default CSS class for the root container.</summary>
     public static string Class { get; set; } = string.Empty;
@@ -49,7 +47,7 @@ public static class PersianDatePickerDefaults
     public static string SeparatorCharacter { get; set; } = "-";
 
     /// <summary>Default selection mode for the component.</summary>
-    public static PersianDatePickerSelectionMode SelectionMode { get; set; } = PersianDatePickerSelectionMode.TextBox;
+    public static SelectionMode SelectionMode { get; set; } = SelectionMode.TextBox;
 
     /// <summary>Default read-only state.</summary>
     public static bool ReadOnly { get; set; } = false;

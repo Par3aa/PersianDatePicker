@@ -1,10 +1,9 @@
 ﻿using System.Globalization;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Components;
-using Par3aa.PersianDatePicker.Options;
-using Par3aa.PersianDatePicker.Enums;
+using Par3aa.PersianDatePicker;
 
-namespace Par3aa.PersianDatePicker.Components;
+namespace Par3aa;
 
 /// <summary>
 /// A Blazor component that provides a Persian (Jalali) date picker using <see cref="System.Globalization.PersianCalendar"/>.
@@ -18,37 +17,37 @@ public partial class PersianDatePicker<TValue> : ComponentBase
     [Parameter] public Expression<Func<TValue>>? ValueExpression { get; set; }
     [Parameter] public EventCallback<TValue> Change { get; set; }
 
-    [Parameter] public string Class { get; set; } = PersianDatePickerDefaults.Class;
-    [Parameter] public string ButtonClass { get; set; } = PersianDatePickerDefaults.ButtonClass;
-    [Parameter] public string InputClass { get; set; } = PersianDatePickerDefaults.InputClass;
+    [Parameter] public string Class { get; set; } = Defaults.Class;
+    [Parameter] public string ButtonClass { get; set; } = Defaults.ButtonClass;
+    [Parameter] public string InputClass { get; set; } = Defaults.InputClass;
 
-    [Parameter] public string Style { get; set; } = PersianDatePickerDefaults.Style;
-    [Parameter] public string ButtonStyle { get; set; } = PersianDatePickerDefaults.ButtonStyle;
-    [Parameter] public string InputStyle { get; set; } = PersianDatePickerDefaults.InputStyle;
+    [Parameter] public string Style { get; set; } = Defaults.Style;
+    [Parameter] public string ButtonStyle { get; set; } = Defaults.ButtonStyle;
+    [Parameter] public string InputStyle { get; set; } = Defaults.InputStyle;
 
-    [Parameter] public string YearTooltip { get; set; } = PersianDatePickerDefaults.YearTooltip;
-    [Parameter] public string MonthTooltip { get; set; } = PersianDatePickerDefaults.MonthTooltip;
-    [Parameter] public string DayTooltip { get; set; } = PersianDatePickerDefaults.DayTooltip;
+    [Parameter] public string YearTooltip { get; set; } = Defaults.YearTooltip;
+    [Parameter] public string MonthTooltip { get; set; } = Defaults.MonthTooltip;
+    [Parameter] public string DayTooltip { get; set; } = Defaults.DayTooltip;
 
-    [Parameter] public string ClearButtonTooltip { get; set; } = PersianDatePickerDefaults.ClearButtonTooltip;
-    [Parameter] public string TodayButtonTooltip { get; set; } = PersianDatePickerDefaults.TodayButtonTooltip;
+    [Parameter] public string ClearButtonTooltip { get; set; } = Defaults.ClearButtonTooltip;
+    [Parameter] public string TodayButtonTooltip { get; set; } = Defaults.TodayButtonTooltip;
 
-    [Parameter] public string SeparatorCharacter { get; set; } = PersianDatePickerDefaults.SeparatorCharacter;
-    [Parameter] public PersianDatePickerSelectionMode SelectionMode { get; set; } = PersianDatePickerDefaults.SelectionMode;
+    [Parameter] public string SeparatorCharacter { get; set; } = Defaults.SeparatorCharacter;
+    [Parameter] public SelectionMode SelectionMode { get; set; } = Defaults.SelectionMode;
 
-    [Parameter] public bool ReadOnly { get; set; } = PersianDatePickerDefaults.ReadOnly;
-    [Parameter] public bool Disabled { get; set; } = PersianDatePickerDefaults.Disabled;
+    [Parameter] public bool ReadOnly { get; set; } = Defaults.ReadOnly;
+    [Parameter] public bool Disabled { get; set; } = Defaults.Disabled;
 
     /// <summary>
     /// Manually sets the button/icon color for this instance. If not set, a CSS variable fallback chain is used.
     /// </summary>
-    [Parameter] public string? Color { get; set; } = PersianDatePickerDefaults.Color;
+    [Parameter] public string? Color { get; set; } = Defaults.Color;
 
     /// <summary>Inline SVG markup for the Today button icon.</summary>
-    [Parameter] public string TodayIcon { get; set; } = PersianDatePickerDefaults.TodayIcon;
+    [Parameter] public string TodayIcon { get; set; } = Defaults.TodayIcon;
 
     /// <summary>Inline SVG markup for the Clear button icon.</summary>
-    [Parameter] public string ClearIcon { get; set; } = PersianDatePickerDefaults.ClearIcon;
+    [Parameter] public string ClearIcon { get; set; } = Defaults.ClearIcon;
 
     protected bool IsInteractive => !(Disabled || ReadOnly);
     protected int? TabIndex => IsInteractive ? null : -1;
@@ -62,11 +61,11 @@ public partial class PersianDatePicker<TValue> : ComponentBase
     [Parameter] public int? SelectedDay { get; set; }
     [Parameter] public EventCallback<int?> SelectedDayChanged { get; set; }
 
-    [Parameter] public bool ShowClearButton { get; set; } = PersianDatePickerDefaults.ShowClearButton;
-    [Parameter] public bool ShowTodayButton { get; set; } = PersianDatePickerDefaults.ShowTodayButton;
+    [Parameter] public bool ShowClearButton { get; set; } = Defaults.ShowClearButton;
+    [Parameter] public bool ShowTodayButton { get; set; } = Defaults.ShowTodayButton;
 
-    [Parameter] public int StartYear { get; set; } = PersianDatePickerDefaults.StartYear;
-    [Parameter] public int EndYear { get; set; } = PersianDatePickerDefaults.EndYear;
+    [Parameter] public int StartYear { get; set; } = Defaults.StartYear;
+    [Parameter] public int EndYear { get; set; } = Defaults.EndYear;
 
     protected bool IsNullable => typeof(TValue) == typeof(DateTime?);
 

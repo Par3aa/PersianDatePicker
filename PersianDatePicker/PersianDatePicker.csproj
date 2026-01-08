@@ -14,9 +14,9 @@
     <!-- NuGet package metadata -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Par3aa.PersianDatePicker</PackageId>
-    <Version>1.0.0</Version>
-    <Authors>Par3aa</Authors>
-    <Company>Par3aa</Company>
+    <Version>1.0.1</Version>
+    <Authors>Parsa Tavangar</Authors>
+    <Company>Parsa Tavangar</Company>
     <Description>Blazor Persian date picker component with support for DateTime and DateTime? using System.Globalization.PersianCalendar.</Description>
     <PackageTags>Blazor;DatePicker;Persian;Jalali;Calendar;RCL;Component</PackageTags>
     <RepositoryUrl>https://github.com/Par3aa/PersianDatePicker</RepositoryUrl>
@@ -29,8 +29,9 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <EnableDefaultItems>true</EnableDefaultItems>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="" />
     <None Include="LICENSE" Pack="true" PackagePath="" />

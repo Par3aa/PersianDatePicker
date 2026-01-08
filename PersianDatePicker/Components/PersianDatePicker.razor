@@ -1,5 +1,5 @@
-﻿@using Par3aa.PersianDatePicker.Enums
-@namespace Par3aa.PersianDatePicker.Components
+﻿@using Par3aa.PersianDatePicker
+@namespace Par3aa
 @typeparam TValue
 
 <div class="@($"main-container {Class}")"
@@ -9,7 +9,7 @@
 
     <div class="number-container">
 
-        @if (SelectionMode == PersianDatePickerSelectionMode.DropDown)
+        @if (SelectionMode == SelectionMode.DropDown)
         {
             <!-- Year -->
             <select class="@($"number-input {InputClass}")"
@@ -72,7 +72,7 @@
                 }
             </select>
         }
-        else if (SelectionMode == PersianDatePickerSelectionMode.TextBox)
+        else if (SelectionMode == SelectionMode.TextBox)
         {
             <!-- Year -->
             <input type="number"
