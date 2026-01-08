@@ -27,7 +27,7 @@ jobs:
         run: dotnet build -c Release --no-restore
 
       - name: Pack
-        run: dotnet pack PersianDatePicker/PersianDatePicker/PersianDatePicker.csproj -c Release -o ./nupkg --no-build --include-symbols --include-source
+        run: dotnet pack PersianDatePicker/PersianDatePicker.csproj -c Release -o ./nupkg --no-build --include-symbols --include-source
           
       - name: Publish
         run: |
